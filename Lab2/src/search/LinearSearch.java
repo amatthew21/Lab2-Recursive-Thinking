@@ -24,14 +24,14 @@ public class LinearSearch {
 	}
 	
 	public static void main(String[] args) {
-		final int N = 100;
+		final int N = 10;
 		//final int KEY = 150;
 		//generate random key from 0 - 100
 		final int KEY = (int)(Math.random() * (100 - 0 + 1) + 0);
 		int[] list = new int[N];
 		
 		for (int i = 0; i < N; i++) {
-			//MODIFIED CONDITION
+			//MODIFIED CONDITION - TASK 1
 			if (i == 0) {
 				list[i] = 150;
 			} else {
@@ -45,7 +45,7 @@ public class LinearSearch {
 		long begin, end, time; //we will measure time it took to search
 		begin = System.nanoTime();//we measure in nanoseconds
 		
-		//Starting the watch
+		
 		System.out.println(linearSearch(list, KEY));
 		System.out.println(linearSearch(list, KEY));
 		
@@ -54,12 +54,18 @@ public class LinearSearch {
 		System.out.println("it took " + time + " nanoseconds to run linear search with the key " + KEY
 				+ " on the array of " + N + " elements."); 
 		
-		//RECURSIVE SEARCH
-		int search = recursiveSearch(list, 0, list.length-1, KEY);
+		
+		//RECURSIVE SEARCH - TASK 2
+		int search = recursiveSearch(list, 0, list.length-1, KEY); //store index 
 		if (search != -1) {
 			System.out.println("KEY found at index: " + search);
 		} else {
 			System.out.println("KEY not found");
 		}
+		
+		end = System.nanoTime();
+		time = end - begin;
+		System.out.println("it took " + time + " nanoseconds to run linear search with the key " + KEY
+				+ " on the array of " + N + " elements.");
 	}
 }
