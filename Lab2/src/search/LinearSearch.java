@@ -19,7 +19,8 @@ public class LinearSearch {
 			return min;
 		if (list[max] == key)
 			return max;
-		return recursiveSearch(list, min + 1, max - 1, key);
+		else
+			return recursiveSearch(list, min + 1, max - 1, key);
 	}
 	
 	public static void main(String[] args) {
