@@ -54,7 +54,6 @@ public class LinearSearch {
 		System.out.println("it took " + time + " nanoseconds to run linear search with the key " + KEY
 				+ " on the array of " + N + " elements."); 
 		
-		
 		//RECURSIVE SEARCH - TASK 2
 		int search = recursiveSearch(list, 0, list.length-1, KEY); //store index 
 		if (search != -1) {
