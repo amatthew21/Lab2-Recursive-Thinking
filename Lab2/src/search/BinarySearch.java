@@ -79,7 +79,7 @@ public class BinarySearch {
 		System.out.println(recursiveBinarySearch(list, 0, list.length - 1, KEY));
 		end = System.nanoTime();
 		time = end - begin;
-		System.out.println("it took " + time + " nanoseconds to run binary search with the key " + KEY
+		System.out.println("it took " + time + " nanoseconds to run recursive binary search with the key " + KEY
 				+ " on the array of " + list.length + " elements.");
 
 	}
