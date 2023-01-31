@@ -24,7 +24,7 @@ public class LinearSearch {
 	}
 	
 	public static void main(String[] args) {
-		final int N = 10;
+		final int N = 10000000;
 		//final int KEY = 150;
 		//generate random key from 0 - 100
 		final int KEY = (int)(Math.random() * (100 - 0 + 1) + 0);
@@ -55,13 +55,15 @@ public class LinearSearch {
 				+ " on the array of " + N + " elements."); 
 		
 		//RECURSIVE SEARCH - TASK 2
+		begin = System.nanoTime();//we measure in nanoseconds
+		
 		int search = recursiveSearch(list, 0, list.length-1, KEY); //store index 
 		if (search != -1) {
 			System.out.println("KEY found at index: " + search);
 		} else {
 			System.out.println("KEY not found");
 		}
-		
+	
 		end = System.nanoTime();
 		time = end - begin;
 		System.out.println("it took " + time + " nanoseconds to run linear search with the key " + KEY
