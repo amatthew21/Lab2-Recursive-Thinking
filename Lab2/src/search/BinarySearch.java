@@ -16,17 +16,30 @@ public class BinarySearch {
 	      else
 	        low = mid + 1;
 	    }
-
 	    return -low - 1; // Now high < low
+	  }
+	  
+	  public static int recursiveBinarySearch(Integer[] list, int low, int high, int key) {
+		  if (high >= low) {
+			  int mid = low + (high - 1) / 2;
+			  	if (list[mid] == key)
+			  		return mid;
+			  	else if(list[mid] > key)
+			  		//return recursiveBinarySearch(list, low, mid - 1, key);
+			  		return 1;
+			  	
+			  	return recursiveBinarySearch(list, mid + 1, high, key);
+		  }
+		  
+		  return -1;
 	  }
 
 	public static void main(String[] args) {
 		
-		long begin, end, time; //we will measure time it took to search
-		begin = System.nanoTime();//we measure in nanoseconds
-		int KEY = (int)(Math.random() * (100 - 0 + 1) + 0);
+		//int KEY = (int)(Math.random() * (100 - 0 + 1) + 0);
+		int KEY = 0;
 		
-		int N = 100;
+		int N = 10;
 		Integer[] list = new Integer[N];
 				
 		for (int i = 0; i < N; i++) {
@@ -48,12 +61,26 @@ public class BinarySearch {
 			System.out.print(i + ",");
 		}
 		
+		
+		long begin, end, time; //we will measure time it took to search
+		
+		//ITERATIVE
+		begin = System.nanoTime();//we measure in nanoseconds
+		
 	    System.out.println(binarySearch(list, KEY));
 	    
 		end = System.nanoTime();
 		time = end - begin;
-		System.out.println("it took " + time + " nanoseconds to run linear search with the key " + KEY
+		System.out.println("it took " + time + " nanoseconds to run binary search with the key " + KEY
 				+ " on the array of " + list.length + " elements."); 
+		
+		//RECURSIVE 
+		begin = System.nanoTime();//we measure in nanoseconds
+		System.out.println(recursiveBinarySearch(list, 0, list.length - 1, KEY));
+		end = System.nanoTime();
+		time = end - begin;
+		System.out.println("it took " + time + " nanoseconds to run binary search with the key " + KEY
+				+ " on the array of " + list.length + " elements.");
 
 	}
 
