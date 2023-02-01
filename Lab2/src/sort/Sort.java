@@ -3,7 +3,8 @@ package sort;
 
 
 public class Sort {
-	
+	//Used to keep track of move count to make it easier to read.
+	static int moveCount;
 	  /** The method for sorting the numbers */
 	//From Pearson / Lab Page
 	  public static void selectionSort(double[] list) {
@@ -51,8 +52,35 @@ public class Sort {
 	  
 	  //Tower of Hanoi
 	
+	  public static void moveDisks(int n, char fromTower,
+		      char toTower, char auxTower) {
+		    if (n == 1) { // Stopping condition
+		      System.out.println("Move disk " + n + " from " +
+		        fromTower + " to " + toTower);
+		    	moveCount++;
+		    }
+		    else {
+		      moveDisks(n - 1, fromTower, auxTower, toTower);
+		      System.out.println("Move disk " + n + " from " +
+		        fromTower + " to " + toTower);
+		      moveCount++;
+		      moveDisks(n - 1, auxTower, toTower, fromTower);
+		    }
+		  }
+	  
 	public static void main(String[] args) {
-		int size = 10;
+		int size = 2;
+		
+		long begin, end, time;
+		
+		begin = System.nanoTime();
+		moveDisks(size,'A','B','C');
+		end = System.nanoTime();
+		time = end-begin;
+		System.out.println("Move Count: " + moveCount);
+		System.out.println("It took " + time + " nanoseconds to move a Tower of Hanoi disks to another tower with " + size + " disks.");
+		
+		/**
 		double[] list = new double[size];
 		//For Worst Case, Starts from size and goes down.
 		
@@ -65,7 +93,7 @@ public class Sort {
 		for (int i = 0; i < list.length; i ++) {
 			list[i] = i;
 		}
-		*/
+		
 		long begin, end, time;
 		System.out.println();
 		begin = System.nanoTime();
@@ -74,6 +102,9 @@ public class Sort {
 		time = end-begin;
 		System.out.println();
 		System.out.println("It took " + time + " nanoseconds to run a selection sort with a size of " + size );
+		*/
+		
+		
 	}
 
 }
